@@ -54,7 +54,7 @@ public class Driver extends Subsystem {
 		gyroSource = new DrivingGyroPID(gyro);
 
 		
-		encoderController = new PIDController(0.1, 0.092, 0.395, encoderSource, speed);
+		encoderController = new PIDController(0.1, 0.0, 0.395, encoderSource, speed);
 		encoderController.setAbsoluteTolerance(0.7);
 		
 		gyroController = new PIDController(0.13, 0.005, 0.023, gyroSource, rotation); //Driving forward PID 0.13, 0.005, 0.023

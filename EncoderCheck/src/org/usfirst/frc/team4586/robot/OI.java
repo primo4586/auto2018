@@ -25,7 +25,7 @@ public class OI {
 		autoTurn = new JoystickButton(driverJoystick, 2);
 		calibrateGyro = new JoystickButton(driverJoystick, 3);
 		
-		autoDrive.whenPressed(new AutoDrive (250));
+		autoDrive.whenPressed(new AutoDrive (100));
 		autoTurn.whenPressed(new AutoTurn(45));
 		calibrateGyro.whenPressed(new Calibrate());
 	}

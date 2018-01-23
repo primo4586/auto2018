@@ -1,6 +1,7 @@
 
 package org.usfirst.frc.team4586.robot;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -14,6 +15,7 @@ import org.usfirst.frc.team4586.robot.commands.AutoCommandGroupLeft;
 import org.usfirst.frc.team4586.robot.commands.AutoCommandGroupMiddle;
 import org.usfirst.frc.team4586.robot.commands.AutoCommandGroupRight;
 import org.usfirst.frc.team4586.robot.commands.ExampleCommand;
+import org.usfirst.frc.team4586.robot.commands.MiddleAutoPickCube;
 import org.usfirst.frc.team4586.robot.subsystems.Driver;
 import org.usfirst.frc.team4586.robot.subsystems.ExampleSubsystem;
 
@@ -31,7 +33,7 @@ public class Robot extends IterativeRobot {
 	public static Driver driver;
 	public static NetworkTable table;
 	Command autonomousCommand;
-	SendableChooser<Command> chooser = new SendableChooser<>();
+	SendableChooser<Integer> chooser = new SendableChooser<>();
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -43,10 +45,10 @@ public class Robot extends IterativeRobot {
 		driver = new Driver(RobotMap.fRMotor, RobotMap.fLMotor, RobotMap.bRMotor, RobotMap.bLMotor, RobotMap.encoder, RobotMap.gyro);
 		driver.calibrateGyro();
 		oi = new OI();
-		chooser.addDefault("Auto Left Side", new AutoCommandGroupLeft());
+		chooser.addDefault("Auto Left Side", 0);
 		//chooser.addObject("Auto Right Side", new AutoCommandGroupRight());
 		//chooser.addObject("AutoMiddle", new AutoCommandGroupMiddle());
-		// chooser.addObject("My Auto", new MyAutoCommand());
+		chooser.addObject("Auto Middle Pickup", 1);
 		SmartDashboard.putData("Auto mode", chooser);
 		smartDashboardInit();
 	}
@@ -79,7 +81,13 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-		autonomousCommand = chooser.getSelected();
+		System.out.println(chooser.getSelected());
+		if (chooser.getSelected() == 0) {
+			autonomousCommand = new AutoCommandGroupLeft();
+		} 
+		else if (chooser.getSelected() == 1) {
+			autonomousCommand = new MiddleAutoPickCube();
+		}
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
 		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
