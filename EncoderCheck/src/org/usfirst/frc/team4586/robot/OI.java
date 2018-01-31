@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team4586.robot.commands.AutoDrive;
+import org.usfirst.frc.team4586.robot.commands.AutoDriveMap;
 import org.usfirst.frc.team4586.robot.commands.AutoTurn;
 import org.usfirst.frc.team4586.robot.commands.Calibrate;
 
@@ -17,16 +18,19 @@ public class OI {
 	public static JoystickButton autoDrive;
 	public static JoystickButton autoTurn;
 	public static JoystickButton calibrateGyro;
+	public static JoystickButton autoDriveMap;
 	
 	public OI()
 	{
 		driverJoystick = new Joystick(0);
 		autoDrive = new JoystickButton(driverJoystick, 1);
 		autoTurn = new JoystickButton(driverJoystick, 2);
+		autoDriveMap = new JoystickButton(driverJoystick, 4);
 		calibrateGyro = new JoystickButton(driverJoystick, 3);
 		
 		autoDrive.whenPressed(new AutoDrive (100));
 		autoTurn.whenPressed(new AutoTurn(45));
 		calibrateGyro.whenPressed(new Calibrate());
+		autoDriveMap.whenPressed(new AutoDriveMap(200));
 	}
 }

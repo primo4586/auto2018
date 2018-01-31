@@ -46,6 +46,8 @@ public class Driver extends Subsystem {
 		this.driver.setInvertedMotor(MotorType.kFrontLeft, true);
 		this.driver.setInvertedMotor(MotorType.kRearLeft, true);
 		
+		this.driver.setSafetyEnabled(false);
+		
 		speed = new DrivingSpeedPID();
 		//rotation = new DrivingRotationPID();
 		rotation = new DrivingRotationPID();

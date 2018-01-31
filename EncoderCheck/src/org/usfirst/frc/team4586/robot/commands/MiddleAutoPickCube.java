@@ -1,5 +1,6 @@
 package org.usfirst.frc.team4586.robot.commands;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -9,24 +10,26 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class MiddleAutoPickCube extends CommandGroup {
 
 	public MiddleAutoPickCube() {
-		boolean FMSSimScale = true;
-		boolean FMSSimSwitch = true;
-		if (FMSSimSwitch && FMSSimScale) {
-			addSequential(new AutoDrive(75));
-			System.out.println("Drive: " + SmartDashboard.getNumber("Encoder Distance",0) + ", Stiya: "
-					+ SmartDashboard.getNumber("Gyro Value",0));
-			System.out.println("Turned: " + SmartDashboard.getNumber("Gyro Value",0));
-			addSequential(new AutoTurn(-48));
-			addSequential(new AutoDrive(200));
-			System.out.println("Drive: " + SmartDashboard.getNumber("Encoder Distance",0) + ", Stiya: "
-					+ SmartDashboard.getNumber("Gyro Value",0));
-			addSequential(new AutoTurn(47));
-			addSequential(new AutoDrive(50));
-			addSequential(new AutoTurn(90));
-			addSequential(new AutoDrive(100));
-			addSequential(new Wait(1));
-			addSequential(new AutoDrive(-100));
+		String gameData = DriverStation.getInstance().getGameSpecificMessage();
+		if (gameData.charAt(0) == 'L') {
+			addSequential(new AutoDrive(50)); //50
+			addSequential(new AutoTurn(-60)); //-60
+			addSequential(new AutoDrive(235)); //235
+			addSequential(new AutoTurn(60)); //60
+			addSequential(new AutoDrive(110)); //110
+			addSequential(new AutoTurn(90)); //90
+			addSequential(new AutoDrive(150)); //150
 			// Remember: add elevator
+		}
+		else
+		{
+			addSequential(new AutoDrive(50)); //50
+			addSequential(new AutoTurn(60)); //-60
+			addSequential(new AutoDrive(235)); //235
+			addSequential(new AutoTurn(-60)); //60
+			addSequential(new AutoDrive(110)); //110
+			addSequential(new AutoTurn(-90)); //90
+			addSequential(new AutoDrive(150)); //150
 		}
 	}
 }

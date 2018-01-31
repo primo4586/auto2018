@@ -33,7 +33,7 @@ public class AutoTurn extends Command {
     protected void execute() {
 		driver.gyroController.setPID(0.08, 0, 0.3);
     	if (Math.abs(driver.getGyro() - setPoint) >= 2) 
-    		driver.arcadeDrive(-driver.getPIDRotationInPlace() * 0.9, 0);
+    		driver.arcadeDrive(-driver.getPIDRotationInPlace() * 0.95, 0);
     	else
     		driver.arcadeDrive(0, 0);
     }
@@ -48,6 +48,7 @@ public class AutoTurn extends Command {
 		System.out.println("Turned: " + SmartDashboard.getNumber("Gyro Value",0));
     	driver.gyroController.disable();
     	driver.arcadeDrive(0, 0);
+    	System.out.println(setPoint);
     }
 
     // Called when another command which requires one or more of the same

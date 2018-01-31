@@ -12,7 +12,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team4586.robot.commands.ArcadeDrive;
 import org.usfirst.frc.team4586.robot.commands.AutoCommandGroupLeft;
-import org.usfirst.frc.team4586.robot.commands.AutoCommandGroupMiddle;
 import org.usfirst.frc.team4586.robot.commands.AutoCommandGroupRight;
 import org.usfirst.frc.team4586.robot.commands.ExampleCommand;
 import org.usfirst.frc.team4586.robot.commands.MiddleAutoPickCube;
@@ -156,6 +155,16 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("Gyro PID", driver.gyroController);
 		SmartDashboard.putNumber("Encoder Setpoint", 0);
 		SmartDashboard.putNumber("GYRO Setpoint", 0);	
-		SmartDashboard.putNumber("Left Side Switch Or Scale", 0); //1 - scale, -1 switch
+		SmartDashboard.putNumber("First Setpoint", 60);
+		SmartDashboard.putNumber("Second Setpoint", 0);
+		SmartDashboard.putNumber("Third Setpoint", 0);
+		SmartDashboard.putNumber("Fourth Setpoint", 0);
+		SmartDashboard.putNumber("Fifth Setpoint", 0);
+		SmartDashboard.putNumber("Sixth Setpoint", 0);
+		SmartDashboard.putNumber("Seventh Setpoint", 0);
+		SmartDashboard.putNumber("Eight Setpoint", 0);
+		SmartDashboard.putNumber("Ninth Setpoint", 0);
+		
+		
 	}
 }
